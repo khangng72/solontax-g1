@@ -1,0 +1,26 @@
+name: solontax-g1
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: solontax-g1-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: solontax_g1
+    command: ["postgres", "-p", "5430"]
+    ports:
+      - "5430:5430"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - solontax-network
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  solontax-network:
+    driver: bridge
