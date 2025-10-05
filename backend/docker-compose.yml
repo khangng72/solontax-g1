@@ -17,6 +17,25 @@ services:
     networks:
       - solontax-network
 
+  solontax-g1-management:
+    build:
+      context: .
+      dockerfile: solontax-g1-management/Dockerfile
+    container_name: solontax-g1-management
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5430/solontax_g1
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      SPRING_JPA_DDL_AUTO: update
+      SPRING_JPA_SHOW_SQL: "true"
+    depends_on:
+      - postgres
+    networks:
+      - solontax-network
+
 volumes:
   postgres_data:
     driver: local
