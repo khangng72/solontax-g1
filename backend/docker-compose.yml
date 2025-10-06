@@ -9,7 +9,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: solontax_g1
-    command: ["postgres", "-p", "5430"]
+    command: [ "postgres", "-p", "5430" ]
     ports:
       - "5430:5430"
     volumes:
@@ -17,11 +17,11 @@ services:
     networks:
       - solontax-network
 
-  solontax-g1-management:
+  solontax-g1-hexmanagement:
     build:
       context: .
-      dockerfile: solontax-g1-management/Dockerfile
-    container_name: solontax-g1-management
+      dockerfile: solontax-g1-hexmanagement/Dockerfile
+    container_name: solontax-g1-hexmanagement
     restart: always
     ports:
       - "1975:1975"
