@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,12 @@ public class PersonController {
     public ResponseEntity<List<PersonDto>> findAll() {
         List<PersonDto> persons = personService.findAll();
         return new ResponseEntity<>(persons, HttpStatus.OK);
+    }
+
+    @GetMapping("/by-tax-number/{taxNumber}")
+    public ResponseEntity<PersonDto> findByTaxNumber(@PathVariable("taxNumber") Long taxNumber) throws Exception {
+        PersonDto person = personService.findByTaxNumber(taxNumber);
+        return new ResponseEntity<>(person, HttpStatus.OK);
     }
 
     @PostMapping

@@ -7,4 +7,5 @@ import solontax.g1.management.entity.Person;
 
 @Repository
 public interface PersonRepository extends JpaRepository<Person, UUID> {
+    Person findByTaxNumber(Long taxNumber);
 }
