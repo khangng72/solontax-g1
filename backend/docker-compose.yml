@@ -22,6 +22,7 @@ services:
       context: .
       dockerfile: solontax-g1-hexmanagement/Dockerfile
     container_name: solontax-g1-hexmanagement
+    image: solontax-g1-hexmanagement
     restart: always
     ports:
       - "1975:1975"
